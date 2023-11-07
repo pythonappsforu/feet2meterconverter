@@ -1,15 +1,18 @@
 import PySimpleGUI as sg
 
+sg.theme('black')
+
 feet_label = sg.Text('Enter Feet: ')
 feet_ip = sg.Input(key='feet')
 inches_label = sg.Text('Enter Inches:')
 inches_ip = sg.Input(key='inches')
 button=sg.Button('Convert',key='convert')
 meter_label = sg.Text(key='meter')
+exit_button = sg.Button('Exit')
 
 window = sg.Window('Converter',layout=[[feet_label,feet_ip],
                                        [inches_label,inches_ip],
-                                       [button,meter_label]])
+                                       [button,exit_button,meter_label]])
 
 while True:
     event,values= window.read()
@@ -23,6 +26,8 @@ while True:
             window['meter'].update(value=f"{meters} m")
 
         case sg.WIN_CLOSED:
+            break
+        case 'Exit':
             break
 
 
